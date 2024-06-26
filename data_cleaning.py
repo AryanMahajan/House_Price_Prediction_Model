@@ -1,18 +1,29 @@
 import pandas as pd
 import seaborn as sns
-from path import TRAIN_PATH
+from path import UNCLEANED_TRAIN_PATH, UNCLEANED_TEST_PATH, CLEANED_TEST_PATH, CLEANED_TRAIN_PATH
 
-df = pd.read_csv(TRAIN_PATH)
+unwanted_columns = ["Id","MSSubClass","MSZoning","LotFrontage","Street","Alley","LotShape","LandContour","Utilities","LotConfig","LandSlope","Neighborhood","Condition1","Condition2","BldgType","HouseStyle","OverallQual","OverallCond","YearBuilt","YearRemodAdd","RoofStyle","RoofMatl","Exterior1st","Exterior2nd","MasVnrType","MasVnrArea","ExterQual","ExterCond","Foundation","BsmtQual","BsmtCond","BsmtExposure","BsmtFinType1","BsmtFinSF1","BsmtFinType2","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","Heating","HeatingQC","CentralAir","Electrical","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","KitchenAbvGr","KitchenQual","TotRmsAbvGrd","Functional","Fireplaces","FireplaceQu","GarageType","GarageYrBlt","GarageFinish","GarageCars","GarageArea","GarageQual","GarageCond","PavedDrive","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","PoolQC","Fence","MiscFeature","MiscVal","MoSold","YrSold","SaleType","SaleCondition"]
 
-removing_columns = ["Id","MSSubClass","MSZoning","LotFrontage","Street","Alley","LotShape","LandContour","Utilities","LotConfig","LandSlope","Neighborhood","Condition1","Condition2","BldgType","HouseStyle","OverallQual","OverallCond","YearBuilt","YearRemodAdd","RoofStyle","RoofMatl","Exterior1st","Exterior2nd","MasVnrType","MasVnrArea","ExterQual","ExterCond","Foundation","BsmtQual","BsmtCond","BsmtExposure","BsmtFinType1","BsmtFinSF1","BsmtFinType2","BsmtFinSF2","BsmtUnfSF","TotalBsmtSF","Heating","HeatingQC","CentralAir","Electrical","1stFlrSF","2ndFlrSF","LowQualFinSF","GrLivArea","KitchenAbvGr","KitchenQual","TotRmsAbvGrd","Functional","Fireplaces","FireplaceQu","GarageType","GarageYrBlt","GarageFinish","GarageCars","GarageArea","GarageQual","GarageCond","PavedDrive","WoodDeckSF","OpenPorchSF","EnclosedPorch","3SsnPorch","ScreenPorch","PoolArea","PoolQC","Fence","MiscFeature","MiscVal","MoSold","YrSold","SaleType","SaleCondition"]
+df_uncleaned_train = pd.read_csv(UNCLEANED_TRAIN_PATH)
 
-df = df.drop(removing_columns, axis = 1)
+df_uncleaned_train = df_uncleaned_train.drop(unwanted_columns, axis = 1)
 
-df["BsmtFullBath"] = df["BsmtFullBath"] + df["BsmtHalfBath"] + df["FullBath"] + df["HalfBath"]
+df_uncleaned_train["BsmtFullBath"] = df_uncleaned_train["BsmtFullBath"] + df_uncleaned_train["BsmtHalfBath"] + df_uncleaned_train["FullBath"] + df_uncleaned_train["HalfBath"]
 
-df = df.drop(["BsmtHalfBath","FullBath","HalfBath"], axis = 1)
+df_uncleaned_train = df_uncleaned_train.drop(["BsmtHalfBath","FullBath","HalfBath"], axis = 1)
 
-df = df.rename(columns={"LotArea":"Area", "BsmtFullBath":"Bathrooms","BedroomAbvGr":"Bedrooms","SalePrice":"Sales Price"})
+df_uncleaned_train = df_uncleaned_train.rename(columns={"LotArea":"Area", "BsmtFullBath":"Bathrooms","BedroomAbvGr":"Bedrooms","SalePrice":"Sales Price"})
 
-head = df.head()
-print(head)
+df_uncleaned_train.to_csv(CLEANED_TRAIN_PATH)
+
+df_uncleaned_test = pd.read_csv(UNCLEANED_TRAIN_PATH)
+
+df_uncleaned_test = df_uncleaned_test.drop(unwanted_columns, axis = 1)
+
+df_uncleaned_test["BsmtFullBath"] = df_uncleaned_test["BsmtFullBath"] + df_uncleaned_test["BsmtHalfBath"] + df_uncleaned_test["FullBath"] + df_uncleaned_test["HalfBath"]
+
+df_uncleaned_test = df_uncleaned_test.drop(["BsmtHalfBath","FullBath","HalfBath"], axis = 1)
+
+df_uncleaned_test = df_uncleaned_test.rename(columns={"LotArea":"Area", "BsmtFullBath":"Bathrooms","BedroomAbvGr":"Bedrooms","SalePrice":"Sales Price"})
+
+df_uncleaned_test.to_csv(CLEANED_TEST_PATH)
