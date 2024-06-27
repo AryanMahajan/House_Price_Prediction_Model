@@ -4,11 +4,7 @@ import pickle
 
 
 def create_train_data():
-    """Loads, processes, and pickles training data into lists of lists of integers.
-
-    Returns:
-        None
-    """
+    #Loads, processes, and pickles training data into lists of lists of integers.
 
     area, bathrooms, bedrooms, sales_price = [], [], [], []
     with open(CLEANED_TRAIN_PATH, 'r') as csvfile:
@@ -33,11 +29,7 @@ def create_train_data():
 
 
 def create_test_data():
-    """Loads, processes, and pickles test data into lists of lists of integers.
-
-    Returns:
-        None
-    """
+    #Loads, processes, and pickles test data into lists of lists of integers.
 
     area, bathrooms, bedrooms, sales_price = [], [], [], []
     with open(CLEANED_TEST_PATH, 'r') as csvfile:

@@ -15,19 +15,11 @@ else:
     x_train = pickle.load(open("X_train.pickle", "rb"))
     y_train = pickle.load(open("y_train.pickle", "rb"))
 
-class myCallback(tf.keras.callbacks.Callback):
-    def on_epoch_end(self, epoch, logs={}):
-        if(logs.get('accuracy')>0.99):
-            print(f"\nReached 99% accuracy so cancelling training!")
-
 
 def training_model():
-    
-    #initialising teh callback class
-    callbacks = myCallback()
 
     model = tf.keras.Sequential([])
     model.add(tf.keras.layers.Dense(units=1))
-    model.compile(optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.001),loss='mse')
+    model.compile(optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.0025),loss='mse')
     model.fit(np.array(x_train), np.array(y_train), epochs = 30, validation_split = 0.3)
     model.save("model.keras")

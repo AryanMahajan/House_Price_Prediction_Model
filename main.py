@@ -5,6 +5,7 @@ import tensorflow as tf
 import os
 import pickle
 import numpy as np
+import csv
 
 #Checking if the model exists or not
 if os.path.exists("model.keras"):
@@ -26,9 +27,15 @@ else:
     x_test = np.array(pickle.load(open("X_test.pickle", "rb")))
     y_test = np.array(pickle.load(open("y_test.pickle", "rb")))
 
-preditction = []
-
 prediction = model.predict([x_test])
 print(prediction*10)
+
+#writing predictions in result.csv
+
+with open('result.csv', 'a', newline='\n') as f:
+    writer = csv.writer(f)
+    writer.writerow(prediction)
+
+#removing the test data
 os.remove('X_test.pickle')
 os.remove('y_test.pickle')
