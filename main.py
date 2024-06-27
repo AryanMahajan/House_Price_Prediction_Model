@@ -34,7 +34,7 @@ print(prediction*10)
 
 with open('result.csv', 'a', newline='\n') as f:
     writer = csv.writer(f)
-    writer.writerow(prediction)
+    writer.writerows(prediction)
 
 #removing the test data
 os.remove('X_test.pickle')
