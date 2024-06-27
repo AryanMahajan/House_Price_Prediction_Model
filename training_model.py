@@ -20,6 +20,6 @@ def training_model():
 
     model = tf.keras.Sequential([])
     model.add(tf.keras.layers.Dense(units=1))
-    model.compile(optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.0025),loss='mse')
+    model.compile(optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.001),loss='mse')
     model.fit(np.array(x_train), np.array(y_train), epochs = 30, validation_split = 0.3)
     model.save("model.keras")

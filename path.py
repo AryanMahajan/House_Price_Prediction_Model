@@ -1,8 +1,0 @@
-
-
-UNCLEANED_TRAIN_PATH = r'LOCATION-OF-THIS-REPOSITORY-ON-YOUR-SYSTEM\house-prices-advanced-regression-techniques\train.csv'
-UNCLEANED_TEST_PATH = r'LOCATION-OF-THIS-REPOSITORY-ON-YOUR-SYSTEM\house-prices-advanced-regression-techniques\train.csv'
-
-
-CLEANED_TRAIN_PATH = r'LOCATION-OF-THIS-REPOSITORY-ON-YOUR-SYSTEM\Data\train.csv'
-CLEANED_TEST_PATH = r'LOCATION-OF-THIS-REPOSITORY-ON-YOUR-SYSTEM\Data\test.csv'

@@ -1,4 +1,3 @@
-from path import CLEANED_TEST_PATH, CLEANED_TRAIN_PATH
 import csv
 import pickle
 
@@ -7,7 +6,7 @@ def create_train_data():
     #Loads, processes, and pickles training data into lists of lists of integers.
 
     area, bathrooms, bedrooms, sales_price = [], [], [], []
-    with open(CLEANED_TRAIN_PATH, 'r') as csvfile:
+    with open(r"Data\train.csv", 'r') as csvfile:
         rows = csv.reader(csvfile, delimiter=',')
         next(rows)  # Skip the header row
         for row in rows:
@@ -32,7 +31,7 @@ def create_test_data():
     #Loads, processes, and pickles test data into lists of lists of integers.
 
     area, bathrooms, bedrooms, sales_price = [], [], [], []
-    with open(CLEANED_TEST_PATH, 'r') as csvfile:
+    with open(r"Data\test.csv", 'r') as csvfile:
         rows = csv.reader(csvfile, delimiter=',')
         next(rows)  # Skip the header row
         for row in rows:
