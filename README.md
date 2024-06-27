@@ -23,9 +23,13 @@ Optionally, visualize the predicted vs. actual prices for insights.
 
 **Dependencies**
 This project requires the following Python libraries:
+
 TensorFlow
+
 Keras
+
 Pandas (for data manipulation)
+
 NumPy (for numerical computations)
 
 **How to run the model:**
