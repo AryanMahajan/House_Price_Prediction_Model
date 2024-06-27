@@ -45,4 +45,5 @@ NumPy (for numerical computations)
 The model "model.keras" is already trained on a dataset of 1461 examples.
 
 **Contributor: Aryan Mahajan**
+
 **GitHub Username: AryanMahajan**
