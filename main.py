@@ -28,7 +28,8 @@ else:
     y_test = np.array(pickle.load(open("y_test.pickle", "rb")))
 
 prediction = model.predict([x_test])
-print(prediction*10)
+prediction = prediction*10
+print(prediction)
 
 #writing predictions in result.csv
 
